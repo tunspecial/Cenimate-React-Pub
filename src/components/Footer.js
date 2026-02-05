@@ -1,8 +1,10 @@
+// Import Link for internal navigation (SPA routing)
 import { Link } from "react-router-dom"
-
+// Footer component displayed at the bottom of the app
 export const Footer = () => {
 
     return (
+        // Footer wrapper with background, border, and padding
         <footer className="w-full bg-neutral-primary-soft dark:bg-slate-900 border-t border-default dark:border-slate-800 p-4">
             <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <span className="text-sm text-body sm:text-center dark:text-gray-500">© 2030 <Link to="/" className="hover:none">Cinemate™</Link>. All Rights Reserved.

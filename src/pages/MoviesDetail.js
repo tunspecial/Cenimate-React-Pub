@@ -1,14 +1,20 @@
+// React hooks
 import { useEffect, useState } from "react"
+// Hook to read route parameters (movie id)
 import { useParams } from "react-router-dom"
+// Fallback image if poster is missing
 import Backup from "../assets/images/backup.png"
+// Custom hook to update page title
 import { useTitle } from "../hooks/useTitle"
 
 export const MoviesDetail = () => {
-
+    // Get dynamic route params (e.g. /movie/:id)
     const params = useParams()
+    // Store movie details
     const [movie, setMovie] = useState({})
+    // Build poster image URL or use backup image
     const image = movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : Backup
-
+    // Fetch movie details when movie id changes
     useEffect(() => {
         const fetchMovies = async () => {
             const respond = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${process.env.REACT_APP_API_KEY}`)
@@ -17,7 +23,7 @@ export const MoviesDetail = () => {
         }
         fetchMovies()
     }, [params.id])
-
+    // Update browser tab title using custom hook
     useTitle(movie.title)
 
     return (

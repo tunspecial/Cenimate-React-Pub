@@ -1,9 +1,13 @@
+// React Router components for defining routes
 import { Routes, Route } from "react-router-dom"
+// Page components
 import { MoviesDetail, MoviesList, Search, PageNotFound } from "../pages"
-
+// Centralized routing component
 export const AllRoutes = () => {
     return (
+        // Wrapper to apply global background (dark mode support)
         <div className="dark:bg-slate-800">
+            {/* Define all application routes */}
             <Routes>
                 <Route path="" element={<MoviesList apiPath="movie/now_playing?" title="Home" />}></Route>
                 <Route path="movie/:id" element={<MoviesDetail />}></Route>

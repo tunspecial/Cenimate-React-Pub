@@ -1,13 +1,16 @@
+// React Router utilities for navigation and routing
 import { Link, NavLink, useNavigate } from "react-router-dom"
+// App logo
 import Logo from "../assets/logo.svg"
+// React hooks
 import { useEffect, useState } from "react"
 
 export const Header = () => {
-
+    // Controls mobile menu visibility
     const [hidden, setHidden] = useState(true)
-
+    // Dark mode state (persisted in localStorage)
     const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMode")) || false)
-
+    // Sync dark mode state with localStorage and <html> class
     useEffect(() => {
         localStorage.setItem("darkMode", JSON.stringify(darkMode))
 
@@ -17,17 +20,19 @@ export const Header = () => {
             document.documentElement.classList.remove("dark")
         }
     }, [darkMode])
-
+    // Tailwind classes for active & inactive navigation links
     const activeClass = "text-base block py-2 px-3 text-blue-600 dark:text-white bg-blue-800 rounded md:bg-transparent md:text-fg-brand md:p-0"
     const inActiveClass = "text-base block py-2 px-3 text-gray-700 dark:text-gray-400 rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-
+    // Programmatic navigation hook
     const navigate = useNavigate()
-
+    // Handle search form submission
     const handleSumit = (events) => {
         events.preventDefault()
+        // Get search input value
         const queryTerm = events.target.search.value
+        // Clear input field
         events.target.reset()
-
+        // Navigate to search results page
         return navigate(`/search?q=${queryTerm}`)
     }
 

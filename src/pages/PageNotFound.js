@@ -1,10 +1,14 @@
+// Image displayed on 404 page
 import PageNotFoundImage from "../assets/images/pagenotfound.png"
+// Link for client-side navigation
 import { Link } from "react-router-dom"
+// Reusable Button component
 import { Button } from "../components/Button"
+// Custom hook to update browser tab title
 import { useTitle } from "../hooks/useTitle"
 
 export const PageNotFound = () => {
-
+     // Set page title to "Page Not Found"
     useTitle("Page Not Found")
 
     return (
